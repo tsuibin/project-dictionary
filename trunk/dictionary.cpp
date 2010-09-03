@@ -1,5 +1,4 @@
 #include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
 #include <QString>
 #include <QDebug>
 #include <QtGui>
@@ -12,11 +11,18 @@ dictionary::dictionary(QWidget *parent) :
     ui(new Ui::dictionary)
 {
     ui->setupUi(this);
+
+
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName("topsvr.com");
-    db.setDatabaseName("/home/huguohu/term4/0831/dic.db");
-    db.setUserName("");
-    db.setPassword("");
+    db.setHostName("localhost");
+    db.setDatabaseName("dic.db");
+    db.setUserName("root");
+    db.setPassword("dearmoe");
+    if(!db.open()) //打开数据库
+    {
+        QMessageBox::warning(this,tr("waring"),tr("open db fiale!"),QMessageBox::Yes,QMessageBox::Yes);
+    }
+    query = new QSqlQuery(db);
 }
 
 dictionary::~dictionary()
@@ -27,24 +33,17 @@ dictionary::~dictionary()
 
 void dictionary::on_SearchButton_clicked()
 {
-    QSqlQuery query;
-    QString w;
     QString sql;
-    if(!db.open()) //打开数据库
+    sql = "select * from dicc where word like '" + ui->WordIput->text() + "%';";
+    query->exec(sql);
+    QString tmp;
+    while(query->next())
     {
-        QMessageBox::warning(this,tr("waring"),tr("open db fiale!"),QMessageBox::Yes,QMessageBox::Yes);
-        //QMessageBox::warning(this,tr(“Warning”),tr(“open db fiale!”),QMessageBox::Yes);
+        //tmp += query.value(1).toString() + " ";
+        tmp += query->value(2).toString() + " ";
+        tmp += query->value(3).toString() + " ";
+        tmp += query->value(4).toString() + " ";
+        tmp += "\r\n";
     }
-    sql.append("select * from dicc where word ='");
-    w = ui->WordIput->text();
-    sql.append(w);
-    sql.append("';");
-    query.exec(sql);
-    while(query.next())
-    {
-        QString ele1 = query.value(1).toString();
-        QString ele2 = query.value(2).toString();
-        QString ele3 = query.value(3).toString();
-        ui->WordBrowser<<ele1<<ele2<<ele3 ;
-    }
+    ui->MeanBrowser->setText(tmp);
 }

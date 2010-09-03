@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
 
 namespace Ui {
     class dictionary;
@@ -13,12 +14,13 @@ class dictionary : public QWidget
     Q_OBJECT
 
 public:
-    explicit dictionary(QWidget *parent = 0);
+    dictionary(QWidget *parent = 0);
     ~dictionary();
     QSqlDatabase db;
 
 private:
     Ui::dictionary *ui;
+    QSqlQuery *query;
 
 private slots:
     void on_SearchButton_clicked();
