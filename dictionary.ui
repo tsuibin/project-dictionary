@@ -49,19 +49,6 @@
     <string>请输入单词</string>
    </property>
   </widget>
-  <widget class="QScrollBar" name="verticalScrollBar">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>100</y>
-     <width>16</width>
-     <height>281</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
   <widget class="QTextBrowser" name="MeanBrowser">
    <property name="geometry">
     <rect>
@@ -72,27 +59,14 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="WordBrowser">
+  <widget class="QListView" name="listView">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>100</y>
      <width>131</width>
      <height>281</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QScrollBar" name="verticalScrollBar_2">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>100</y>
-     <width>16</width>
-     <height>281</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
    </property>
   </widget>
  </widget>
