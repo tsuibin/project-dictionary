@@ -40,15 +40,11 @@ void dictionary::on_SearchButton_clicked()
     QString tmp2;
     while(query->next())
     {
-        //tmp += query.value(1).toString() + " ";
         tmp1 = query->value(2).toString() + " ";
-        //tmp1 += "\r\n";
         ui->listWidget->addItem(tmp1);
         tmp2 += query->value(3).toString() + " ";
         tmp2 += query->value(4).toString() + " ";
         tmp2 += "\r\n";
-
-
     }
 
 
