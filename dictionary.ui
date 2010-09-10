@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>dictionary</string>
+   <string>AKA多功能词典</string>
   </property>
   <widget class="QLineEdit" name="WordIput">
    <property name="geometry">
