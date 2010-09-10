@@ -1,5 +1,6 @@
 #include <QtGui/QApplication>
 #include <QtSql/QSqlDatabase>
+#include <QDebug>
 #include "dictionary.h"
 
 
