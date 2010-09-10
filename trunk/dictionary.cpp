@@ -54,7 +54,7 @@ void dictionary::on_SearchButton_clicked()
         sql = "select * from dicc where word like '" + var + "%';";
         qDebug()<<sql;
         query->exec(sql);
-        QString tmp1;
+        QString tmp1,str;
         //tmp1 = "";
         QStringList strlist;
         while(query->next())
@@ -75,7 +75,7 @@ void dictionary::on_SearchButton_clicked()
             ui->MeanBrowser->setText(tmp1);
         }
         else
-            ui->MeanBrowser->setText("对不起，没有你找的单词！");;
+            ui->MeanBrowser->setText(tr("对不起，没有你找的单词！"));;
     }
     else
         ui->MeanBrowser->clear();

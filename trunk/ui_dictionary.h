@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dictionary.ui'
 **
-** Created: Fri Sep 10 14:14:26 2010
+** Created: Fri Sep 10 15:12:16 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -67,7 +67,7 @@ public:
 
     void retranslateUi(QWidget *dictionary)
     {
-        dictionary->setWindowTitle(QApplication::translate("dictionary", "dictionary", 0, QApplication::UnicodeUTF8));
+        dictionary->setWindowTitle(QApplication::translate("dictionary", "AKA\345\244\232\345\212\237\350\203\275\350\257\215\345\205\270", 0, QApplication::UnicodeUTF8));
         SearchButton->setText(QApplication::translate("dictionary", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("dictionary", "\350\257\267\350\276\223\345\205\245\345\215\225\350\257\215", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("dictionary", "\345\242\236\345\212\240\350\257\215\345\272\223", 0, QApplication::UnicodeUTF8));
