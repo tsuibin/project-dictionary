@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dictionary.ui'
 **
-** Created: Fri Sep 10 15:12:16 2010
+** Created: Thu Sep 16 09:12:30 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -28,7 +28,7 @@ class Ui_dictionary
 {
 public:
     QLineEdit *WordIput;
-    QPushButton *SearchButton;
+    QPushButton *WebSearchButton;
     QLabel *label;
     QTextBrowser *MeanBrowser;
     QListWidget *listWidget;
@@ -42,11 +42,11 @@ public:
         WordIput = new QLineEdit(dictionary);
         WordIput->setObjectName(QString::fromUtf8("WordIput"));
         WordIput->setGeometry(QRect(180, 40, 251, 27));
-        SearchButton = new QPushButton(dictionary);
-        SearchButton->setObjectName(QString::fromUtf8("SearchButton"));
-        SearchButton->setGeometry(QRect(450, 40, 101, 27));
-        SearchButton->setAutoDefault(true);
-        SearchButton->setDefault(false);
+        WebSearchButton = new QPushButton(dictionary);
+        WebSearchButton->setObjectName(QString::fromUtf8("WebSearchButton"));
+        WebSearchButton->setGeometry(QRect(450, 40, 101, 27));
+        WebSearchButton->setAutoDefault(true);
+        WebSearchButton->setDefault(false);
         label = new QLabel(dictionary);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(70, 40, 81, 21));
@@ -68,7 +68,7 @@ public:
     void retranslateUi(QWidget *dictionary)
     {
         dictionary->setWindowTitle(QApplication::translate("dictionary", "AKA\345\244\232\345\212\237\350\203\275\350\257\215\345\205\270", 0, QApplication::UnicodeUTF8));
-        SearchButton->setText(QApplication::translate("dictionary", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
+        WebSearchButton->setText(QApplication::translate("dictionary", "\347\275\221\347\273\234\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("dictionary", "\350\257\267\350\276\223\345\205\245\345\215\225\350\257\215", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("dictionary", "\345\242\236\345\212\240\350\257\215\345\272\223", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
