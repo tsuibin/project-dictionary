@@ -4,23 +4,24 @@
 #include <QtGui>
 #include <QTimer>
 #include <qfiledialog.h>
-//#include <fnmatch.h>
-//#include <ftw.h>
 #include <sqlite3.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/stat.h>
 #include <iostream>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
+#include <QTextCodec>
+#include <QtXml>
+#include <QXmlDefaultHandler>
 #include "dictionary.h"
 #include "ui_dictionary.h"
 
 
 dictionary::dictionary(QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent),QXmlDefaultHandler(),
     ui(new Ui::dictionary)
 {
     ui->setupUi(this);
-
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("localhost");
     db.setDatabaseName("dic.db");
@@ -33,10 +34,11 @@ dictionary::dictionary(QWidget *parent) :
     query = new QSqlQuery(db);
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timeout_slot()));
-
     mainToolBar = new QToolBar(this);
     mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-
+    manager = new QNetworkAccessManager(this);
+    connect(manager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(replyFinished(QNetworkReply*)));
 }
 
 dictionary::~dictionary()
@@ -45,47 +47,13 @@ dictionary::~dictionary()
     db.close();
 }
 
-void dictionary::on_SearchButton_clicked()
-{
-    QString sql;
-    ui->listWidget->clear();
-    if(!var.isEmpty())
-    {
-        sql = "select * from dicc where word like '" + var + "%';";
-        qDebug()<<sql;
-        query->exec(sql);
-        QString tmp1,str;
-        //tmp1 = "";
-        QStringList strlist;
-        while(query->next())
-        {
-            tmp1 = query->value(2).toString();
-            if(!strlist.contains(tmp1))
-            strlist.append(tmp1);
-        }
-        ui->listWidget->addItems(strlist);
-
-        if(ui->listWidget->item(0) != 0)
-        {
-            sql = "select * from dicc where word='"+ui->listWidget->item(0)->text()+"';";
-            query->exec(sql);
-            query->next();
-            tmp1 = "["+query->value(3).toString()+"]"+"\r\n";
-            tmp1 +=query->value(4).toString()+"\r\n";
-            ui->MeanBrowser->setText(tmp1);
-        }
-        else
-            ui->MeanBrowser->setText(tr("对不起，没有你找的单词！"));;
-    }
-    else
-        ui->MeanBrowser->clear();
-}
 
 void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
 {
     QString sql;
-
-    sql = "select * from dicc where word='" + item->text()+"';";
+    this->word_selected = item->text();
+    ui->WordIput->setText(this->word_selected);
+    sql = "select * from dicc where word='" + this->word_selected+"';";
     qDebug() <<sql;
     query->exec(sql);
     QString temp;
@@ -97,7 +65,41 @@ void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
 
 void dictionary::timeout_slot()
 {
-    on_SearchButton_clicked();
+    QString sql;
+    ui->listWidget->clear();
+    if(!var.isEmpty())
+    {
+        sql = "select * from dicc where word like '" + var + "%';";
+        qDebug()<<sql;
+        query->exec(sql);
+        QString tmp1;
+        //tmp1 = "";
+        QStringList strlist;
+        while(query->next())
+        {
+            tmp1 = query->value(2).toString();
+            if(!strlist.contains(tmp1))
+            strlist.append(tmp1);
+        }
+        ui->listWidget->addItems(strlist);
+        if(ui->listWidget->item(0) != 0)
+        {
+            this->word_selected = ui->listWidget->item(0)->text();
+            sql = "select * from dicc where word='"+this->word_selected+"';";
+            query->exec(sql);
+            query->next();
+            tmp1 = "["+query->value(3).toString()+"]"+"\r\n";
+            tmp1 +=query->value(4).toString()+"\r\n";
+            ui->MeanBrowser->setText(tmp1);
+        }
+        else
+        {
+            ui->MeanBrowser->setText(tr("对不起，没有你找的单词！"));
+            this->word_selected = ui->WordIput->text();
+        }
+    }
+    else
+        ui->MeanBrowser->clear();
 }
 
 void dictionary::on_WordIput_textEdited(QString w)
@@ -108,6 +110,13 @@ void dictionary::on_WordIput_textEdited(QString w)
     timer->start(500);
 }
 
+void dictionary::keyPressEvent(QKeyEvent *k)
+{
+    if(k->key() == Qt::Key_Enter)
+    {
+        this->timeout_slot();
+    }
+}
 
 void dictionary::on_pushButton_clicked()
 {
@@ -196,17 +205,10 @@ bool dictionary::load_dic(QString path)
                         }
                             m = line.mid(m_index+3,line.length()-m_index-1);
                         sql = "insert into dicc(dicid,word,t,mean) values("+id+",'";
-//                        if(w.contains("'"))
-//                            sql += w.replace(0,1,'"')+"','";
-//                        else
                             sql += w+"','";
-//                        if(t.contains("'"))
-//                            sql += t.replace(0,1,'"')+"','";
-//                        else
                             sql += t+"','";
                         sql += m+"');";
                         query->exec(sql);
-                       // qDebug()<<"insert dicc"<<sql;
                     }
                 }
                 file.close();
@@ -219,3 +221,80 @@ bool dictionary::load_dic(QString path)
     return true;
 }
 
+
+void dictionary::on_WebSearchButton_clicked()
+{
+    //this->timeout_slot();
+    ui->MeanBrowser->append(tr("<font='title' color= red> <-金山词霸-> </font>"));
+    QString str="http://dict-co.iciba.com/api/dictionary.php?w=";
+    str += this->word_selected;
+    qDebug()<<str;
+    manager->get(QNetworkRequest(QUrl(str)));
+
+}
+void dictionary::replyFinished(QNetworkReply *reply)
+{
+    QTextCodec* gbk_codec = QTextCodec::codecForName("utf8");
+    QString str = gbk_codec->toUnicode(reply->readAll().data());
+    qDebug()<<str;
+//    doc.setContent(str);
+//    QDomElement docElem = doc.documentElement();
+//    QDomNode n = docElem.firstChild();
+//    qDebug()<<n.toElement().text();
+//    while(!n.isNull())
+//    {
+////        qDebug()<<n.hasChildNodes();
+//        if(n.firstChild().isNull())
+//        {
+//            qDebug()<<"n.firstChild().isNull()"+n.firstChild().isNull();
+//        }
+//        else if(n.toElement().tagName().compare("ps") == 0)
+//        {
+//            ui->MeanBrowser->append("["+n.toElement().text()+"]");
+//        }
+//        else
+//        {
+//            ui->MeanBrowser->append(n.toElement().text());
+//            qDebug()<<n.toElement().text();
+//        }
+//        n = n.nextSibling();
+//    }
+
+
+    inputSource.setData(str);
+    reader.setContentHandler(this);
+    reader.setErrorHandler(this);
+    reader.parse(inputSource);
+
+}
+
+bool dictionary::startElement(const QString &namespaceURI, const QString &localName, const QString &qName, const QXmlAttributes &atts)
+{
+    node_name = qName;
+    qDebug()<<node_name;
+    return true;
+}
+
+bool dictionary::characters(const QString &ch)
+{
+    QString tmp = ch;
+    if(!node_name.contains("pron"))
+    {
+//        Text.clear();
+//        Text = ch;
+//        qDebug()<<"Text:"+Text;
+//        const QString tmp = Text;
+        ui->MeanBrowser->append(tmp);
+    }
+}
+
+bool dictionary::endElement(const QString &namespaceURI, const QString &localName, const QString &qName)
+{
+    return true;
+}
+
+bool dictionary::fatalError(const QXmlParseException &exception)
+{
+    qDebug()<<exception.message();
+    return false;
+}

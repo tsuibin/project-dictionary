@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="SearchButton">
+  <widget class="QPushButton" name="WebSearchButton">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>查询</string>
+    <string>网络查询</string>
    </property>
    <property name="autoDefault">
     <bool>true</bool>

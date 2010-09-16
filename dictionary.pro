@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql network xml
 
 TARGET = dictionary
 TEMPLATE = app
