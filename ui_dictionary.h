@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dictionary.ui'
 **
-** Created: Thu Sep 16 09:12:30 2010
+** Created: Thu Sep 16 23:42:48 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,15 +30,15 @@ public:
     QLineEdit *WordIput;
     QPushButton *WebSearchButton;
     QLabel *label;
-    QTextBrowser *MeanBrowser;
-    QListWidget *listWidget;
     QPushButton *pushButton;
+    QListWidget *listWidget;
+    QTextBrowser *MeanBrowser;
 
     void setupUi(QWidget *dictionary)
     {
         if (dictionary->objectName().isEmpty())
             dictionary->setObjectName(QString::fromUtf8("dictionary"));
-        dictionary->resize(584, 412);
+        dictionary->resize(584, 417);
         WordIput = new QLineEdit(dictionary);
         WordIput->setObjectName(QString::fromUtf8("WordIput"));
         WordIput->setGeometry(QRect(180, 40, 251, 27));
@@ -50,15 +50,15 @@ public:
         label = new QLabel(dictionary);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(70, 40, 81, 21));
-        MeanBrowser = new QTextBrowser(dictionary);
-        MeanBrowser->setObjectName(QString::fromUtf8("MeanBrowser"));
-        MeanBrowser->setGeometry(QRect(180, 90, 371, 281));
-        listWidget = new QListWidget(dictionary);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(30, 90, 121, 281));
         pushButton = new QPushButton(dictionary);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(460, 380, 92, 27));
+        listWidget = new QListWidget(dictionary);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setGeometry(QRect(30, 90, 121, 281));
+        MeanBrowser = new QTextBrowser(dictionary);
+        MeanBrowser->setObjectName(QString::fromUtf8("MeanBrowser"));
+        MeanBrowser->setGeometry(QRect(180, 90, 371, 281));
 
         retranslateUi(dictionary);
 
