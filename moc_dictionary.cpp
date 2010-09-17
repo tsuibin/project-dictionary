@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dictionary.h'
 **
-** Created: Thu Sep 16 23:09:55 2010
+** Created: Fri Sep 17 19:38:21 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_dictionary[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,17 +32,19 @@ static const uint qt_meta_data_dictionary[] = {
 
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
-      41,   11,   11,   11, 0x08,
-      65,   11,   11,   11, 0x08,
-     102,   97,   11,   11, 0x08,
-     146,   11,   11,   11, 0x08,
-     167,  161,   11,   11, 0x08,
+      37,   11,   11,   11, 0x08,
+      66,   11,   11,   11, 0x08,
+      90,   11,   11,   11, 0x08,
+     127,  122,   11,   11, 0x08,
+     171,   11,   11,   11, 0x08,
+     192,  186,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_dictionary[] = {
-    "dictionary\0\0on_WebSearchButton_clicked()\0"
+    "dictionary\0\0on_handw_input_clicked()\0"
+    "on_WebSearchButton_clicked()\0"
     "on_pushButton_clicked()\0"
     "on_WordIput_textEdited(QString)\0item\0"
     "on_listWidget_itemClicked(QListWidgetItem*)\0"
@@ -78,15 +80,16 @@ int dictionary::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_WebSearchButton_clicked(); break;
-        case 1: on_pushButton_clicked(); break;
-        case 2: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 4: timeout_slot(); break;
-        case 5: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 0: on_handw_input_clicked(); break;
+        case 1: on_WebSearchButton_clicked(); break;
+        case 2: on_pushButton_clicked(); break;
+        case 3: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 5: timeout_slot(); break;
+        case 6: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

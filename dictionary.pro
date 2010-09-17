@@ -8,11 +8,14 @@ QT       += core gui sql network xml
 
 TARGET = dictionary
 TEMPLATE = app
-
+LIBS += -lzinnia
 
 SOURCES += main.cpp\
-        dictionary.cpp
+        dictionary.cpp \
+    hand_wdialog.cpp
 
-HEADERS  += dictionary.h
+HEADERS  += dictionary.h \
+    hand_wdialog.h
 
-FORMS    += dictionary.ui
+FORMS    += dictionary.ui \
+    hand_wdialog.ui

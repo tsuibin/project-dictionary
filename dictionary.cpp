@@ -26,7 +26,7 @@ dictionary::dictionary(QWidget *parent) :
     db.setDatabaseName("dic.db");
     db.setUserName("root");
     db.setPassword("dearmoe");
-    if(!db.open()) //打开数据库
+    if(!db.open())
     {
         QMessageBox::warning(this,tr("waring"),tr("open db faile!"),QMessageBox::Yes,QMessageBox::Yes);
     }
@@ -324,43 +324,14 @@ void dictionary::replyFinished(QNetworkReply *reply)
     {
         ui->MeanBrowser->append(tr("<font color=blue size=3>>>网络查询失败</font>"));
     }
-
-
-
-//    inputSource.setData(str);
-//    reader.setContentHandler(this);
-//    reader.setErrorHandler(this);
-//    reader.parse(inputSource);
-
 }
 
-//bool dictionary::startElement(const QString &namespaceURI, const QString &localName, const QString &qName, const QXmlAttributes &atts)
-//{
-//    node_name = qName;
-//    qDebug()<<node_name;
-//    return true;
-//}
+void dictionary::on_handw_input_clicked()
+{
+    mydialog.show();
+}
 
-//bool dictionary::characters(const QString &ch)
-//{
-//    QString tmp = ch;
-//    if(!node_name.contains("pron"))
-//    {
-////        Text.clear();
-////        Text = ch;
-////        qDebug()<<"Text:"+Text;
-////        const QString tmp = Text;
-//        ui->MeanBrowser->append(tmp);
-//    }
-//}
-
-//bool dictionary::endElement(const QString &namespaceURI, const QString &localName, const QString &qName)
-//{
-//    return true;
-//}
-
-//bool dictionary::fatalError(const QXmlParseException &exception)
-//{
-//    qDebug()<<exception.message();
-//    return false;
-//}
+void dictionary::get_handinput(QString a)
+{
+    this->ui->WordIput->setText(a);
+}
