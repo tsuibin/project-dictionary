@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>584</width>
-    <height>412</height>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,14 +55,17 @@
     <string>请输入单词</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="MeanBrowser">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>90</y>
-     <width>371</width>
-     <height>281</height>
+     <x>460</x>
+     <y>380</y>
+     <width>92</width>
+     <height>27</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>增加词库</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
@@ -75,17 +78,14 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QTextBrowser" name="MeanBrowser">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>380</y>
-     <width>92</width>
-     <height>27</height>
+     <x>180</x>
+     <y>90</y>
+     <width>371</width>
+     <height>281</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>增加词库</string>
    </property>
   </widget>
  </widget>

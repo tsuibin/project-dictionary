@@ -17,7 +17,7 @@ namespace Ui {
     class dictionary;
 }
 
-class dictionary : public QWidget,public QXmlDefaultHandler
+class dictionary : public QWidget/*,public QXmlDefaultHandler*/
 {
     Q_OBJECT
 
@@ -32,12 +32,12 @@ public:
     QSqlQuery *query;
     QString Text;
 
-protected:
-    bool startElement(const QString &namespaceURI,const QString &localName,
-                      const QString &qName,const QXmlAttributes &atts);
-    bool endElement(const QString &namespaceURI,const QString &localName,const QString &qName);
-    bool characters(const QString &ch);
-    bool fatalError(const QXmlParseException &exception);
+//protected:
+//    bool startElement(const QString &namespaceURI,const QString &localName,
+//                      const QString &qName,const QXmlAttributes &atts);
+//    bool endElement(const QString &namespaceURI,const QString &localName,const QString &qName);
+//    bool characters(const QString &ch);
+//    bool fatalError(const QXmlParseException &exception);
 private:
     Ui::dictionary *ui;
     QString var;
@@ -45,10 +45,10 @@ private:
     QToolBar *mainToolBar;
     QNetworkAccessManager *manager;
     QString word_selected;
-//    QDomDocument doc;
+    QDomDocument doc;
     QXmlInputSource inputSource;
     QXmlSimpleReader reader;
-
+    char isCN;
     QString node_name;
 
 private slots:

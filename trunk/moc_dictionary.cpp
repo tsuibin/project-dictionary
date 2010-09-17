@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dictionary.h'
 **
-** Created: Thu Sep 16 10:09:49 2010
+** Created: Thu Sep 16 23:09:55 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -68,8 +68,6 @@ void *dictionary::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_dictionary))
         return static_cast<void*>(const_cast< dictionary*>(this));
-    if (!strcmp(_clname, "QXmlDefaultHandler"))
-        return static_cast< QXmlDefaultHandler*>(const_cast< dictionary*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
