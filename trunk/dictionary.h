@@ -10,20 +10,18 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtXml>
 #include <QXmlDefaultHandler>
-#define N 1024
-#define M 500
+#include "hand_wdialog.h"
 
 namespace Ui {
     class dictionary;
 }
 
-class dictionary : public QWidget/*,public QXmlDefaultHandler*/
+class dictionary : public QWidget
 {
     Q_OBJECT
 
 public:
     dictionary(QWidget *parent = 0);
-    //int myfunc(const char *pathname, const struct stat *statptr, int type);
     int read_dir(QString dir);
     bool load_dic(QString str);
     void keyPressEvent(QKeyEvent *k);
@@ -31,13 +29,9 @@ public:
     QSqlDatabase db;
     QSqlQuery *query;
     QString Text;
+    hand_wdialog mydialog;
+    void get_handinput(QString);
 
-//protected:
-//    bool startElement(const QString &namespaceURI,const QString &localName,
-//                      const QString &qName,const QXmlAttributes &atts);
-//    bool endElement(const QString &namespaceURI,const QString &localName,const QString &qName);
-//    bool characters(const QString &ch);
-//    bool fatalError(const QXmlParseException &exception);
 private:
     Ui::dictionary *ui;
     QString var;
@@ -52,6 +46,7 @@ private:
     QString node_name;
 
 private slots:
+    void on_handw_input_clicked();
     void on_WebSearchButton_clicked();
     void on_pushButton_clicked();
     void on_WordIput_textEdited(QString );

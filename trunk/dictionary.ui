@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="WebSearchButton">
+  <widget class="QPushButton" name="handw_input">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>网络查询</string>
+    <string>手写输入</string>
    </property>
    <property name="autoDefault">
     <bool>true</bool>
