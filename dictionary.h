@@ -30,7 +30,6 @@ public:
     QSqlQuery *query;
     QString Text;
     hand_wdialog mydialog;
-    void get_handinput(QString);
 
 private:
     Ui::dictionary *ui;
@@ -44,6 +43,8 @@ private:
     QXmlSimpleReader reader;
     char isCN;
     QString node_name;
+public slots:
+    void insertWord(QString word);
 
 private slots:
     void on_handw_input_clicked();
@@ -53,6 +54,8 @@ private slots:
     void on_listWidget_itemClicked(QListWidgetItem* item);
     void timeout_slot();
     void replyFinished(QNetworkReply* reply);
+
+
 };
 
 #endif // DICTIONARY_H

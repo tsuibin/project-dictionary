@@ -38,6 +38,8 @@ dictionary::dictionary(QWidget *parent) :
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
+    connect(&mydialog,SIGNAL(sendWord(QString)),
+            this,SLOT(insertWord(QString)));
 }
 
 dictionary::~dictionary()
@@ -60,6 +62,7 @@ void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
         temp += "["+query->value(3).toString()+"]"+"\n";
         temp += query->value(4).toString()+"\n";
         ui->MeanBrowser->setText(temp);
+
     }
     else
     {
@@ -70,6 +73,7 @@ void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
         temp += "["+query->value(3).toString()+"]"+"\n";
         temp += query->value(2).toString()+"\n";
         ui->MeanBrowser->setText(temp);
+        this->word_selected = query->value(2).toString();
     }
     on_WebSearchButton_clicked();
 }
@@ -131,6 +135,7 @@ void dictionary::timeout_slot()
                 tmp1 = "["+query->value(3).toString()+"]"+"\n";
                 tmp1 +=query->value(2).toString()+"\n";
                 ui->MeanBrowser->setText(tmp1);
+                this->word_selected = query->value(2).toString();
                 qDebug()<<"this the word";
             }
             on_WebSearchButton_clicked();
@@ -175,6 +180,12 @@ void dictionary::on_pushButton_clicked()
     qDebug()<<filename.absolutePath();
 }
 
+void dictionary::insertWord(QString word)
+{
+    ui->WordIput->clear();
+    ui->WordIput->insert(word.trimmed());
+    qDebug()<<ui->WordIput->text();
+}
 
 bool dictionary::load_dic(QString path)
 {
@@ -283,24 +294,31 @@ void dictionary::replyFinished(QNetworkReply *reply)
         doc.setContent(str);
         QDomElement docElem = doc.documentElement();
         QDomNode n = docElem.firstChild();
-        qDebug()<<n.toElement().text();
+//        qDebug()<<n.toElement().text();
         while(!n.isNull())
         {
     //        qDebug()<<n.hasChildNodes();
-            qDebug()<<n.toElement().tagName()+"child";
+//            qDebug()<<n.toElement().tagName()+"child";
+            QString type1 = this->word_selected.replace(0,1,this->word_selected.at(0).toUpper());
+            QString type2 = this->word_selected.replace(0,1,this->word_selected.at(0).toLower());
             if(!n.firstChild().toElement().tagName().isEmpty())
             {
                 QDomNodeList list = n.childNodes();
                 for(int i = 0; i < list.size();i++)
                 {
                     QDomNode node = list.at(i);
-                    if(node.isElement() && (!node.toElement().tagName().contains("pron")) && n.toElement().text().contains(this->word_selected))
+                    if(node.isElement() && (!node.toElement().tagName().contains("pron")) && n.toElement().text().contains(type1))
                     {
-                        QString temp = node.toElement().text().replace(this->word_selected,"<font color=blue>"+this->word_selected+"</font>");
+                        QString temp = node.toElement().text().replace(type1,"<font color=blue>"+type1+"</font>");
+                        ui->MeanBrowser->append(temp);
+                    }
+                    else if(node.isElement() && (!node.toElement().tagName().contains("pron")) && n.toElement().text().contains(type2))
+                    {
+                        QString temp = node.toElement().text().replace(type2,"<font color=blue>"+type2+"</font>");
                         ui->MeanBrowser->append(temp);
                     }
                     else if(node.isElement() && !node.toElement().tagName().contains("pron"))
-                    ui->MeanBrowser->append(node.toElement().text());
+                        ui->MeanBrowser->append(node.toElement().text());
                 }
             }
             else if(n.toElement().tagName().compare("ps") == 0)
@@ -309,13 +327,21 @@ void dictionary::replyFinished(QNetworkReply *reply)
             }
             else if(!n.toElement().tagName().contains("pron"))
             {
-                if(n.toElement().text().contains(this->word_selected))
+                if(n.toElement().text().contains(type1))
                 {
-                    QString temp = n.toElement().text().replace(this->word_selected,"<font color=blue>"+this->word_selected+"</font>");
+                    qDebug()<<"type1"<<n.toElement().text();
+                    QString temp = n.toElement().text().replace(type1,"<font color=blue>"+type1+"</font>");
+                    ui->MeanBrowser->append(temp);
+                }
+                else if(n.toElement().text().contains(type2))
+                {
+                    qDebug()<<"type2"<<n.toElement().text();
+                    QString temp = n.toElement().text().replace(type2,"<font color=blue>"+type2+"</font>");
                     ui->MeanBrowser->append(temp);
                 }
                 else
-                ui->MeanBrowser->append(n.toElement().text());
+                    ui->MeanBrowser->append(n.toElement().text());
+                qDebug()<<n.toElement().text();
             }
             n = n.nextSibling();
         }
@@ -329,9 +355,8 @@ void dictionary::replyFinished(QNetworkReply *reply)
 void dictionary::on_handw_input_clicked()
 {
     mydialog.show();
+    qDebug()<<"hand_w"<<mydialog.han_w;
+//    this->ui->WordIput->setText(mydialog.han_w);
+//    connect(this->mydialog.han_w,SIGNAL)
 }
 
-void dictionary::get_handinput(QString a)
-{
-    this->ui->WordIput->setText(a);
-}

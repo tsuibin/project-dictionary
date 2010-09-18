@@ -23,6 +23,7 @@ hand_wdialog::hand_wdialog(QWidget *parent) :
       character = zinnia::Character::create();
       timer = new QTimer(this);
       connect(timer,SIGNAL(timeout()),this,SLOT(timeout_slot()));
+
 }
 
 hand_wdialog::~hand_wdialog()
@@ -133,13 +134,16 @@ void hand_wdialog::mouseReleaseEvent(QMouseEvent *event)
             timer->stop();
             timer->setSingleShot(true);
             timer->start(500);
-
         }
     }
 }
 
-//void hand_wdialog::on_wordlist_itemClicked(QListWidgetItem* item)
-//{
-////    dictionary::get_handinput(item->text());
-//}
+void hand_wdialog::on_wordlist_itemClicked(QListWidgetItem* item)
+{
+    this->han_w = item->text();
+    qDebug() << this->han_w;
+    emit sendWord(this->han_w);
+//    dic.get_handinput(item->text());;
+//   get_handinput(item->text());
+}
 
