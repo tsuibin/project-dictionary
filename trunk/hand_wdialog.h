@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMouseEvent>
 #include <QTimer>
+#include <QListWidgetItem>
 #include "zinnia.h"
 
 namespace Ui {
@@ -21,6 +22,7 @@ public:
     void mouseReleaseEvent(QMouseEvent *);
     void mousePressEvent(QMouseEvent *);
     void paintEvent(QPaintEvent *);
+    QString han_w;
 //    dictionary dic;
 
 private:
@@ -35,10 +37,13 @@ private:
     zinnia::Character *character;
     zinnia::Result *result;
     QTimer *timer;
+signals:
+    void sendWord(QString);
 
+public slots:
+    void on_wordlist_itemClicked(QListWidgetItem* item);
 
 private slots:
-//    void on_wordlist_itemClicked(QListWidgetItem* item);
     void on_clearbt_clicked();
     void timeout_slot();
 };
