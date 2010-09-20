@@ -38,16 +38,19 @@ dictionary::dictionary(QWidget *parent) :
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
-    connect(&mydialog,SIGNAL(sendWord(QString)),
-            this,SLOT(insertWord(QString)));
+
+//    connect(&mydialog,SIGNAL(sendWord(QString)),
+//            this,SLOT(insertWord(QString)));
+
 }
 
 dictionary::~dictionary()
 {
+//    emit dic_window_close();
+//    qDebug()<<"dictionary dele";
     delete ui;
     db.close();
 }
-
 
 void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
 {
@@ -354,9 +357,14 @@ void dictionary::replyFinished(QNetworkReply *reply)
 
 void dictionary::on_handw_input_clicked()
 {
-    mydialog.show();
-    qDebug()<<"hand_w"<<mydialog.han_w;
-//    this->ui->WordIput->setText(mydialog.han_w);
-//    connect(this->mydialog.han_w,SIGNAL)
+
+    emit this->openHanw();
 }
+
+void dictionary::closeEvent(QCloseEvent *event)
+{
+    emit dic_window_close();
+}
+
+
 

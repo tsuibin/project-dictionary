@@ -46,10 +46,7 @@ void hand_wdialog::paintEvent(QPaintEvent *)
     QPainter pp(&pix);
     pp.translate(-20,-10);
     pp.drawLine(lastPoint,endPoint);
-//    pp.drawLine(150,30,150,230);
-//    pp.drawLine(50,130,250,130);
     lastPoint = endPoint;
-//    pp.drawPoint(lastPoint.x(),lastPoint.y());
     QPainter painter(this);
     painter.translate(20,10);
     painter.drawPixmap(0,0,pix);
@@ -143,7 +140,12 @@ void hand_wdialog::on_wordlist_itemClicked(QListWidgetItem* item)
     this->han_w = item->text();
     qDebug() << this->han_w;
     emit sendWord(this->han_w);
-//    dic.get_handinput(item->text());;
-//   get_handinput(item->text());
 }
+
+void hand_wdialog::close_hanw()
+{
+    qDebug()<<"hand_wdialog close";
+    this->close();
+}
+
 
