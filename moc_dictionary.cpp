@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dictionary.h'
 **
-** Created: Fri Sep 17 19:38:21 2010
+** Created: Mon Sep 20 12:35:09 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,28 +23,33 @@ static const uint qt_meta_data_dictionary[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      12,   11,   11,   11, 0x05,
+      23,   11,   11,   11, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x08,
-      37,   11,   11,   11, 0x08,
-      66,   11,   11,   11, 0x08,
-      90,   11,   11,   11, 0x08,
-     127,  122,   11,   11, 0x08,
-     171,   11,   11,   11, 0x08,
-     192,  186,   11,   11, 0x08,
+      47,   42,   11,   11, 0x0a,
+      67,   11,   11,   11, 0x08,
+      92,   11,   11,   11, 0x08,
+     116,   11,   11,   11, 0x08,
+     153,  148,   11,   11, 0x08,
+     197,   11,   11,   11, 0x08,
+     218,  212,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_dictionary[] = {
-    "dictionary\0\0on_handw_input_clicked()\0"
-    "on_WebSearchButton_clicked()\0"
+    "dictionary\0\0openHanw()\0dic_window_close()\0"
+    "word\0insertWord(QString)\0"
+    "on_handw_input_clicked()\0"
     "on_pushButton_clicked()\0"
     "on_WordIput_textEdited(QString)\0item\0"
     "on_listWidget_itemClicked(QListWidgetItem*)\0"
@@ -80,17 +85,31 @@ int dictionary::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_handw_input_clicked(); break;
-        case 1: on_WebSearchButton_clicked(); break;
-        case 2: on_pushButton_clicked(); break;
-        case 3: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 4: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 5: timeout_slot(); break;
-        case 6: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 0: openHanw(); break;
+        case 1: dic_window_close(); break;
+        case 2: insertWord((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: on_handw_input_clicked(); break;
+        case 4: on_pushButton_clicked(); break;
+        case 5: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 7: timeout_slot(); break;
+        case 8: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
+}
+
+// SIGNAL 0
+void dictionary::openHanw()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void dictionary::dic_window_close()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
 }
 QT_END_MOC_NAMESPACE

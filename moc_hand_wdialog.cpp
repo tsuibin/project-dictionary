@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'hand_wdialog.h'
 **
-** Created: Fri Sep 17 19:38:24 2010
+** Created: Mon Sep 20 12:35:11 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,22 +23,29 @@ static const uint qt_meta_data_hand_wdialog[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      14,   13,   13,   13, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      14,   13,   13,   13, 0x08,
-      35,   13,   13,   13, 0x08,
+      37,   32,   13,   13, 0x0a,
+      79,   13,   13,   13, 0x0a,
+      92,   13,   13,   13, 0x08,
+     113,   13,   13,   13, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_hand_wdialog[] = {
-    "hand_wdialog\0\0on_clearbt_clicked()\0"
+    "hand_wdialog\0\0sendWord(QString)\0item\0"
+    "on_wordlist_itemClicked(QListWidgetItem*)\0"
+    "close_hanw()\0on_clearbt_clicked()\0"
     "timeout_slot()\0"
 };
 
@@ -71,12 +78,22 @@ int hand_wdialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_clearbt_clicked(); break;
-        case 1: timeout_slot(); break;
+        case 0: sendWord((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: on_wordlist_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 2: close_hanw(); break;
+        case 3: on_clearbt_clicked(); break;
+        case 4: timeout_slot(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 5;
     }
     return _id;
+}
+
+// SIGNAL 0
+void hand_wdialog::sendWord(QString _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

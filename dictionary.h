@@ -10,7 +10,6 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtXml>
 #include <QXmlDefaultHandler>
-#include "hand_wdialog.h"
 
 namespace Ui {
     class dictionary;
@@ -29,8 +28,8 @@ public:
     QSqlDatabase db;
     QSqlQuery *query;
     QString Text;
-    hand_wdialog mydialog;
-
+    void on_WebSearchButton_clicked();
+    void closeEvent(QCloseEvent *event);
 private:
     Ui::dictionary *ui;
     QString var;
@@ -43,12 +42,16 @@ private:
     QXmlSimpleReader reader;
     char isCN;
     QString node_name;
-public slots:
-    void insertWord(QString word);
 
+
+signals:
+    void openHanw();
+    void dic_window_close();
+
+public slots:
+    void insertWord(QString word);  
 private slots:
     void on_handw_input_clicked();
-    void on_WebSearchButton_clicked();
     void on_pushButton_clicked();
     void on_WordIput_textEdited(QString );
     void on_listWidget_itemClicked(QListWidgetItem* item);

@@ -42,7 +42,7 @@ signals:
 
 public slots:
     void on_wordlist_itemClicked(QListWidgetItem* item);
-
+    void close_hanw();
 private slots:
     void on_clearbt_clicked();
     void timeout_slot();
