@@ -12,4 +12,5 @@ void communicat::start()
             &this->dic,SLOT(insertWord(QString)));
     connect(&this->dic,SIGNAL(openHanw()),&this->hand_w,SLOT(show()));
     connect(&this->dic,SIGNAL(dic_window_close()),&this->hand_w,SLOT(close()));
+//    connect(&this->dic,SIGNAL(add_isclicked(QSqlDatabase,QSqlQuery*)),&this->add_dic,SLOT());
 }

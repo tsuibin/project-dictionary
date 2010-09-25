@@ -4,6 +4,7 @@
 #include <QObject>
 #include "dictionary.h"
 #include "hand_wdialog.h"
+#include "addic_thread.h"
 
 class communicat : public QObject
 {
@@ -13,7 +14,7 @@ public:
     void start();
     dictionary dic;
     hand_wdialog hand_w;
-
+    addic_thread add_dic;
 signals:
     void sendWord(QString);
 

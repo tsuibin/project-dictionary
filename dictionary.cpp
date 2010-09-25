@@ -14,6 +14,7 @@
 #include <QXmlDefaultHandler>
 #include "dictionary.h"
 #include "ui_dictionary.h"
+#include "addic_thread.h"
 
 
 dictionary::dictionary(QWidget *parent) :
@@ -38,16 +39,12 @@ dictionary::dictionary(QWidget *parent) :
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
-
-//    connect(&mydialog,SIGNAL(sendWord(QString)),
-//            this,SLOT(insertWord(QString)));
+    myprocess = new QProcess;
 
 }
 
 dictionary::~dictionary()
 {
-//    emit dic_window_close();
-//    qDebug()<<"dictionary dele";
     delete ui;
     db.close();
 }
@@ -79,6 +76,7 @@ void dictionary::on_listWidget_itemClicked(QListWidgetItem* item)
         this->word_selected = query->value(2).toString();
     }
     on_WebSearchButton_clicked();
+    myprocess->kill();
 }
 
 void dictionary::timeout_slot()
@@ -169,27 +167,6 @@ void dictionary::keyPressEvent(QKeyEvent *k)
     }
 }
 
-void dictionary::on_pushButton_clicked()
-{
-    QFileDialog *fd = new QFileDialog(this,"file dialog","/home/",NULL);
-    fd->setModal(QFileDialog::DirectoryOnly);
-    fd->setViewMode(QFileDialog::Detail);
-    QDir filename;
-    if(fd->exec()== QDialog::Accepted)
-    {
-        filename = fd->directory();
-        load_dic(filename.absolutePath());
-    }
-    qDebug()<<filename.absolutePath();
-}
-
-void dictionary::insertWord(QString word)
-{
-    ui->WordIput->clear();
-    ui->WordIput->insert(word.trimmed());
-    qDebug()<<ui->WordIput->text();
-}
-
 bool dictionary::load_dic(QString path)
 {
     int nFiles = 0;
@@ -233,12 +210,12 @@ bool dictionary::load_dic(QString path)
                     a = line.indexOf("[N]");
                     b = line.indexOf("[C]");
                     sql = "insert into dicname(dicname) values('"+line.mid(a+3,b-a-3)+"');";
-                    query->exec(sql);
+                    this->query->exec(sql);
                     sql.clear();
                     sql = "select id from dicname where dicname='"+line.mid(a+3,b-a-3)+"';";
-                    query->exec(sql);
-                    query->next();
-                    id = query->value(0).toString();
+                    this->query->exec(sql);
+                    this->query->next();
+                    id = this->query->value(0).toString();
                     sql.clear();
                     while(!stream.atEnd())
                     {
@@ -265,7 +242,7 @@ bool dictionary::load_dic(QString path)
                             sql += w+"','";
                             sql += t+"','";
                         sql += m+"');";
-                        query->exec(sql);
+                        this->query->exec(sql);
                     }
                 }
                 file.close();
@@ -274,10 +251,34 @@ bool dictionary::load_dic(QString path)
         }
         i++;
     }while(i<list.size());
-
-    return true;
 }
 
+void dictionary::on_pushButton_clicked()
+{
+//    this->thread1= new addic_thread(this->db,this->query,0);
+//    thread1->start();
+
+//        emit this->add_isclicked(this->db,this->query);
+    QFileDialog *fd = new QFileDialog(this,"file dialog","/home/",NULL);
+    fd->setModal(QFileDialog::DirectoryOnly);
+    fd->setViewMode(QFileDialog::Detail);
+    QDir filename;
+     QString path;
+    if(fd->exec()== QDialog::Accepted)
+    {
+        filename = fd->directory();
+        path = filename.absolutePath();
+       this->load_dic(path);
+    }
+
+}
+
+void dictionary::insertWord(QString word)
+{
+    ui->WordIput->clear();
+    ui->WordIput->insert(word.trimmed());
+    qDebug()<<ui->WordIput->text();
+}
 
 void dictionary::on_WebSearchButton_clicked()
 {
@@ -286,10 +287,12 @@ void dictionary::on_WebSearchButton_clicked()
     qDebug()<<str;
     manager->get(QNetworkRequest(QUrl(str)));
 }
+
 void dictionary::replyFinished(QNetworkReply *reply)
 {
     QTextCodec* gbk_codec = QTextCodec::codecForName("utf8");
     QString str = gbk_codec->toUnicode(reply->readAll().data());
+    this->sound_url.clear();
     if(!str.isEmpty())
     {
         ui->MeanBrowser->append(tr("<font color=red size=4> 金山词霸 </font>\n"));
@@ -322,11 +325,18 @@ void dictionary::replyFinished(QNetworkReply *reply)
                     }
                     else if(node.isElement() && !node.toElement().tagName().contains("pron"))
                         ui->MeanBrowser->append(node.toElement().text());
+                    else if(node.isElement()&&node.toElement().tagName().contains("pron"))
+                        this->sound_url.append(node.toElement().text());
                 }
             }
             else if(n.toElement().tagName().compare("ps") == 0)
             {
-                ui->MeanBrowser->append("["+n.toElement().text()+"]"+"<img src=/home/huguohu/term4/project-dictionary/laba.gif></img>");
+                ui->MeanBrowser->append("["+n.toElement().text()+"]");
+
+            }
+            else if(n.toElement().tagName().contains("pron"))
+            {
+                this->sound_url.append(n.toElement().text());
             }
             else if(!n.toElement().tagName().contains("pron"))
             {
@@ -368,3 +378,10 @@ void dictionary::closeEvent(QCloseEvent *event)
 
 
 
+
+void dictionary::on_soundbt_clicked()
+{
+    myprocess->kill();
+    QString mplayer_path("/usr/bin/mplayer");
+    myprocess->start(mplayer_path,this->sound_url);
+}
