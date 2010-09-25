@@ -38,8 +38,8 @@ private:
     QNetworkAccessManager *manager;
     QString word_selected;
     QDomDocument doc;
-    QXmlInputSource inputSource;
-    QXmlSimpleReader reader;
+
+
     char isCN;
     QString node_name;
 

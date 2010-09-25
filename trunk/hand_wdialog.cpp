@@ -16,7 +16,7 @@ hand_wdialog::hand_wdialog(QWidget *parent) :
     this->pix = QPixmap(200,200);
     this->pix.fill(Qt::white);
     this->recognizer = zinnia::Recognizer::create();
-      if (!recognizer->open("/usr/local/lib/zinnia/model/tomoe/handwriting-ja.model")) {
+      if (!recognizer->open("/usr/local/lib/zinnia/model/tomoe/handwriting-zh_CN.model")) {
         std::cerr << recognizer->what() << std::endl;
 
       }

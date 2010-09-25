@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>手写输入</string>
   </property>
   <widget class="QListWidget" name="wordlist">
    <property name="geometry">
@@ -34,6 +34,10 @@
    </property>
    <property name="text">
     <string>清除</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/Broom.png</normaloff>image/Broom.png</iconset>
    </property>
   </widget>
  </widget>
