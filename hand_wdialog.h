@@ -28,7 +28,6 @@ public:
 private:
     Ui::hand_wdialog *ui;
     QPixmap pix;
-    QPixmap pix1;
     QPoint lastPoint;
     QPoint endPoint;
     QList<QPoint> last_list;
