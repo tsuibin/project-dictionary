@@ -133,7 +133,13 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>image/maobi.png</normaloff>image/maobi.png</iconset>
+               <normaloff>image/handw.png</normaloff>image/handw.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
              </property>
              <property name="autoDefault">
               <bool>true</bool>

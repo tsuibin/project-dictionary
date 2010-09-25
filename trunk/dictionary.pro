@@ -13,11 +13,13 @@ LIBS += -lzinnia
 SOURCES += main.cpp\
         dictionary.cpp \
     hand_wdialog.cpp \
-    communicat.cpp
+    communicat.cpp \
+    addic_thread.cpp
 
 HEADERS  += dictionary.h \
     hand_wdialog.h \
-    communicat.h
+    communicat.h \
+    addic_thread.h
 
 FORMS    += dictionary.ui \
     hand_wdialog.ui
