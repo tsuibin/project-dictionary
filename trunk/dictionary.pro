@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network xml QT3_SUPPORT
+QT       += core gui sql network xml QT3_SUPPORT webkit
 
 TARGET = dictionary
 TEMPLATE = app
@@ -14,12 +14,16 @@ SOURCES += main.cpp\
         dictionary.cpp \
     hand_wdialog.cpp \
     communicat.cpp \
-    addic_thread.cpp
+    set_dialog.cpp
 
 HEADERS  += dictionary.h \
     hand_wdialog.h \
     communicat.h \
-    addic_thread.h
+    set_dialog.h
 
 FORMS    += dictionary.ui \
-    hand_wdialog.ui
+    hand_wdialog.ui \
+    set_dialog.ui
+
+RESOURCES += \
+    images.qrc
