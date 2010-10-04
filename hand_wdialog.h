@@ -23,7 +23,7 @@ public:
     void mousePressEvent(QMouseEvent *);
     void paintEvent(QPaintEvent *);
     QString han_w;
-//    dictionary dic;
+
 
 private:
     Ui::hand_wdialog *ui;

@@ -6,163 +6,284 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>437</height>
+    <width>608</width>
+    <height>411</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>AKA多功能词典</string>
   </property>
   <property name="toolTip">
-   <string>发音</string>
+   <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>请输入单词</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="WordIput"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>image/search.png</normaloff>image/search.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QListWidget" name="listWidget"/>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="toolTip">
-              <string>保存</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/save.png</normaloff>image/save.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_3">
-             <property name="toolTip">
-              <string>全文翻译</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/fulltext.png</normaloff>image/fulltext.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_5">
-             <property name="toolTip">
-              <string>设置</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/option.png</normaloff>image/option.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="soundbt">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/laba.png</normaloff>image/laba.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="toolTip">
-              <string>添加词库</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/ciku.png</normaloff>image/ciku.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="handw_input">
-             <property name="toolTip">
-              <string>手写输入</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>image/handw.png</normaloff>image/handw.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>24</width>
-               <height>24</height>
-              </size>
-             </property>
-             <property name="autoDefault">
-              <bool>true</bool>
-             </property>
-             <property name="default">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="MeanBrowser"/>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-  </layout>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>221</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1677700</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="MeanBrowser">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>50</y>
+     <width>361</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>390</y>
+     <width>41</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>状态栏</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>418</x>
+     <y>390</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;table style=&quot;-qt-table-type: root; margin-top:4px; margin-bottom:4px; margin-left:4px; margin-right:4px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;border: none;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;关于我们&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="WordIput">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>17</y>
+     <width>221</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>手动增加词库</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="hwinput_bt">
+   <property name="geometry">
+    <rect>
+     <x>242</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>手写输入</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/handw.png</normaloff>image/handw.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loaddic_bt">
+   <property name="geometry">
+    <rect>
+     <x>294</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>添加词库</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/ciku.png</normaloff>image/ciku.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="page_bt">
+   <property name="geometry">
+    <rect>
+     <x>346</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>全文翻译</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/fulltext.png</normaloff>image/fulltext.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_dic_bt">
+   <property name="geometry">
+    <rect>
+     <x>398</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>手动增加词库</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/add.png</normaloff>image/add.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="set_bt">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>设置</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/option.png</normaloff>image/option.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save_bt">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>保存</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/save.png</normaloff>image/save.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sound_bt">
+   <property name="geometry">
+    <rect>
+     <x>502</x>
+     <y>13</y>
+     <width>46</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>发音</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/laba.png</normaloff>image/laba.png</iconset>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>listWidget</tabstop>
+  <tabstop>WordIput</tabstop>
+  <tabstop>MeanBrowser</tabstop>
+  <tabstop>hwinput_bt</tabstop>
+  <tabstop>loaddic_bt</tabstop>
+  <tabstop>page_bt</tabstop>
+  <tabstop>add_dic_bt</tabstop>
+  <tabstop>set_bt</tabstop>
+  <tabstop>save_bt</tabstop>
+  <tabstop>sound_bt</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
