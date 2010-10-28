@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network xml QT3_SUPPORT webkit
+QT       += core gui sql network xml  webkit
 
 TARGET = dictionary
 TEMPLATE = app
