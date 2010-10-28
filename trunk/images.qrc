@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>image/xiangyun.jpg</file>
         <file>image/Dictionary.png</file>
     </qresource>
 </RCC>
