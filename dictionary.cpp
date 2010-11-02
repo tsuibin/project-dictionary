@@ -13,14 +13,17 @@
 #include <QtXml>
 #include <QXmlDefaultHandler>
 #include <QWebView>
+
 #include "dictionary.h"
 #include "ui_dictionary.h"
+
 
 
 dictionary::dictionary(QWidget *parent) :
     QWidget(parent),/*QXmlDefaultHandler(),*/
     ui(new Ui::dictionary)
 {
+
     ui->setupUi(this);
 //layout
     this->dic_layout();
@@ -178,7 +181,7 @@ bool dictionary::load_dic(QString path)
     int i=0;
     do{
         QFileInfo fileInfo = list.at(i);
-        if(fileInfo.fileName()=="."|fileInfo.fileName()=="..")
+        if(fileInfo.fileName()=="." || fileInfo.fileName()=="..")
         {
             i++;
             continue;
@@ -461,6 +464,7 @@ void dictionary::dic_layout()
     ui->MeanBrowser->setMinimumSize(390,400);
     ui->WordIput->setMaximumWidth(450);
     ui->listWidget->setMaximumWidth(450);
+
     this->topLayout = new QGridLayout();
     this->midLayout = new QGridLayout();
     this->bottomLayout = new QHBoxLayout();

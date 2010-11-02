@@ -8,7 +8,7 @@ QT       += core gui sql network xml  webkit
 
 TARGET = dictionary
 TEMPLATE = app
-LIBS += -lzinnia
+LIBS += -L/home/tsuibin/source/project-dictionary -lzinnia
 
 SOURCES += main.cpp\
         dictionary.cpp \
@@ -25,5 +25,4 @@ FORMS    += dictionary.ui \
     hand_wdialog.ui \
     set_dialog.ui
 
-RESOURCES += \
-    images.qrc
+RESOURCES +=
