@@ -1,4 +1,4 @@
-#include <QtSql/QSqlDatabase>
+#include <QSqlDatabase>
 #include <QString>
 #include <QDebug>
 #include <QtGui>
@@ -7,8 +7,8 @@
 #include <sqlite3.h>
 #include <stdlib.h>
 #include <string.h>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 #include <QTextCodec>
 #include <QtXml>
 #include <QXmlDefaultHandler>
@@ -18,17 +18,17 @@
 #include "ui_dictionary.h"
 
 
-
 dictionary::dictionary(QWidget *parent) :
     QWidget(parent),/*QXmlDefaultHandler(),*/
     ui(new Ui::dictionary)
 {
 
     ui->setupUi(this);
-//layout
-    this->dic_layout();
-//the system tray
-    this->system_tray();
+    //layout
+        this->dic_layout();
+    //the system tray
+        this->system_tray();
+
     this->init_db();
     fd = new QFileDialog(this,"file dialog","/home/",NULL);
     timer = new QTimer(this);
@@ -40,6 +40,7 @@ dictionary::dictionary(QWidget *parent) :
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
     myprocess = new QProcess;
+
 }
 
 dictionary::~dictionary()
@@ -469,6 +470,7 @@ void dictionary::dic_layout()
     this->midLayout = new QGridLayout();
     this->bottomLayout = new QHBoxLayout();
     this->mainLayout = new QVBoxLayout(this);
+
     this->topLayout->addWidget(ui->WordIput,0,0,1,4);
     this->topLayout->addWidget(ui->hwinput_bt,0,4);
     this->topLayout->addWidget(ui->loaddic_bt,0,5);
@@ -487,11 +489,12 @@ void dictionary::dic_layout()
     this->mainLayout->addLayout(this->topLayout);
     this->mainLayout->addLayout(this->midLayout);
     this->mainLayout->addLayout(this->bottomLayout);
+
 }
 
 void dictionary::system_tray()
 {
-    QIcon icon = QIcon(QPixmap(":/image/Dictionary.png"));
+    QIcon icon = QIcon(QPixmap("image/Dictionary.png"));
     this->setWindowIcon(icon);
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setIcon(icon);

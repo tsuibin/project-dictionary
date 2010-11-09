@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dictionary.h'
 **
-** Created: Mon Sep 20 12:35:09 2010
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
+** Created: Tue Nov 9 19:49:16 2010
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'dictionary.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.6.3. It"
+#error "This file was generated using the moc from 4.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,40 +20,50 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_dictionary[] = {
 
  // content:
-       4,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x05,
       23,   11,   11,   11, 0x05,
+      42,   11,   11,   11, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      47,   42,   11,   11, 0x0a,
-      67,   11,   11,   11, 0x08,
-      92,   11,   11,   11, 0x08,
-     116,   11,   11,   11, 0x08,
-     153,  148,   11,   11, 0x08,
-     197,   11,   11,   11, 0x08,
-     218,  212,   11,   11, 0x08,
+      58,   53,   11,   11, 0x0a,
+      78,   11,   11,   11, 0x0a,
+      97,   11,   11,   11, 0x08,
+     118,   11,   11,   11, 0x08,
+     139,   11,   11,   11, 0x08,
+     163,   11,   11,   11, 0x08,
+     185,   11,   11,   11, 0x08,
+     205,   11,   11,   11, 0x08,
+     229,   11,   11,   11, 0x08,
+     266,  261,   11,   11, 0x08,
+     310,   11,   11,   11, 0x08,
+     331,  325,   11,   11, 0x08,
+     368,  361,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_dictionary[] = {
     "dictionary\0\0openHanw()\0dic_window_close()\0"
-    "word\0insertWord(QString)\0"
-    "on_handw_input_clicked()\0"
-    "on_pushButton_clicked()\0"
+    "set_open()\0word\0insertWord(QString)\0"
+    "exitDialogWindow()\0on_save_bt_clicked()\0"
+    "on_page_bt_clicked()\0on_loaddic_bt_clicked()\0"
+    "on_sound_bt_clicked()\0on_set_bt_clicked()\0"
+    "on_hwinput_bt_clicked()\0"
     "on_WordIput_textEdited(QString)\0item\0"
     "on_listWidget_itemClicked(QListWidgetItem*)\0"
     "timeout_slot()\0reply\0replyFinished(QNetworkReply*)\0"
+    "reason\0iconActivated(QSystemTrayIcon::ActivationReason)\0"
 };
 
 const QMetaObject dictionary::staticMetaObject = {
@@ -87,16 +97,23 @@ int dictionary::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: openHanw(); break;
         case 1: dic_window_close(); break;
-        case 2: insertWord((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: on_handw_input_clicked(); break;
-        case 4: on_pushButton_clicked(); break;
-        case 5: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 6: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 7: timeout_slot(); break;
-        case 8: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 2: set_open(); break;
+        case 3: insertWord((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: exitDialogWindow(); break;
+        case 5: on_save_bt_clicked(); break;
+        case 6: on_page_bt_clicked(); break;
+        case 7: on_loaddic_bt_clicked(); break;
+        case 8: on_sound_bt_clicked(); break;
+        case 9: on_set_bt_clicked(); break;
+        case 10: on_hwinput_bt_clicked(); break;
+        case 11: on_WordIput_textEdited((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 12: on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 13: timeout_slot(); break;
+        case 14: replyFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 15: iconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 9;
+        _id -= 16;
     }
     return _id;
 }
@@ -111,5 +128,11 @@ void dictionary::openHanw()
 void dictionary::dic_window_close()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, 0);
+}
+
+// SIGNAL 2
+void dictionary::set_open()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE
