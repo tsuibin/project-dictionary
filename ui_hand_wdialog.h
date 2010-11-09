@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'hand_wdialog.ui'
 **
-** Created: Mon Sep 20 12:35:00 2010
-**      by: Qt User Interface Compiler version 4.6.3
+** Created: Tue Nov 9 19:49:07 2010
+**      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -38,6 +38,9 @@ public:
         clearbt = new QPushButton(hand_wdialog);
         clearbt->setObjectName(QString::fromUtf8("clearbt"));
         clearbt->setGeometry(QRect(240, 180, 71, 27));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("image/Broom.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearbt->setIcon(icon);
 
         retranslateUi(hand_wdialog);
 
@@ -46,7 +49,7 @@ public:
 
     void retranslateUi(QDialog *hand_wdialog)
     {
-        hand_wdialog->setWindowTitle(QApplication::translate("hand_wdialog", "Dialog", 0, QApplication::UnicodeUTF8));
+        hand_wdialog->setWindowTitle(QApplication::translate("hand_wdialog", "\346\211\213\345\206\231\350\276\223\345\205\245", 0, QApplication::UnicodeUTF8));
         clearbt->setText(QApplication::translate("hand_wdialog", "\346\270\205\351\231\244", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
